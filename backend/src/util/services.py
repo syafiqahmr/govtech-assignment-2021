@@ -24,5 +24,9 @@ def create_url(db: _orm.Session, url: _schemas.Url):
     return db_url
 
 
-def count_url_by_shorturl(db: _orm.Session, short_url):
+def count_url_by_short_url(db: _orm.Session, short_url):
     return db.query(_models.Url).filter(_models.Url.short_url == short_url).count()
+
+
+def get_url_by_short_url(db: _orm.Session, short_url):
+    return db.query(_models.Url).filter(_models.Url.short_url == short_url).first()

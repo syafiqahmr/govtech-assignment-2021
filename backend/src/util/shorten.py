@@ -27,8 +27,7 @@ def shorten_url(long_url: str, db: _orm.Session):
 
     return short_url
 
-# verify short url is unique
-
 
 def verify_unique_short_url(short_url: str, db: _orm.Session):
-    return _services.count_url_by_shorturl(db, short_url) == 0
+    # verify short url is unique
+    return _services.count_url_by_short_url(db, short_url) == 0
