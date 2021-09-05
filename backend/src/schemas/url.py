@@ -1,6 +1,14 @@
-from pydantic import BaseModel
+import pydantic as _pydantic
 
 
-class Url(BaseModel):
-    shortUrl: str
-    longUrl: str
+class _UrlBase(_pydantic.BaseModel):
+    short_url: str
+    long_url: str
+
+
+class Url(_UrlBase):
+    short_url: str
+    long_url: str
+
+    class Config:
+        orm_mode = True
