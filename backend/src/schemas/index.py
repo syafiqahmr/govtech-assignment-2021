@@ -1,1 +1,1 @@
-from schemas.url import Url
+from schemas.url import Url, UrlCreate
