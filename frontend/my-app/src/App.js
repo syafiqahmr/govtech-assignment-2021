@@ -9,23 +9,30 @@ class App extends Component {
       longUrl: "lewmd",
       shortUrl: "wed",
       hideResultSuccess: true,
-      api: "https://localhost:8000/url"
+      api: "http://localhost:8000/url"
     }
+  }
+
+  handleChange(event) {
+    this.setState({ longUrlForm: event.target.value });
   }
 
   postData() {
     const requestOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ long_url: this.state.longUrl })
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ long_url: this.state.longUrlForm })
     };
 
-    fetch(this.state.api, requestOptions).then(res => res.json).then(
-      (result) => {
+    fetch(this.state.api, requestOptions).then(res => res.json()).then(
+      (data) => {
         this.setState({
           hideResultSuccess: false,
-          longUrl: result.long_url,
-          shortUrl: result.short_url
+          longUrl: data.long_url,
+          shortUrl: data.short_url
         });
       },
       (error) => {
@@ -50,9 +57,11 @@ class App extends Component {
                 value={this.state.longUrlForm}
                 className="col-span-5 mt-1 h-10 rounded-md border-gray-300 shadow-sm focus:border-indigo-200 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 placeholder="Your Long URL"
+                onChange={(event) => this.handleChange(event)}
               />
               <button
                 className="w-24 justify-self-end sm:w-full mt-1 block h-10 rounded-md bg-indigo-200 font-medium"
+                onClick={() => this.postData()}
               >
                 Submit
               </button>
