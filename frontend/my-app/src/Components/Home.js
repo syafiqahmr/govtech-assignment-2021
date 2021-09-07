@@ -4,9 +4,9 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      longUrlForm: "wdke",
-      longUrl: "lewmd",
-      shortUrl: "wed",
+      longUrlForm: "",
+      longUrl: "",
+      shortUrl: "",
       hideResultSuccess: true,
       api: "http://localhost:8000/url"
     }
@@ -31,7 +31,7 @@ class Home extends Component {
         this.setState({
           hideResultSuccess: false,
           longUrl: data.long_url,
-          shortUrl: data.short_url
+          shortUrl: window.location.hostname + ":" + window.location.port + "/" + data.short_url
         });
       },
       (error) => {
@@ -55,7 +55,7 @@ class Home extends Component {
                 type="text"
                 value={this.state.longUrlForm}
                 className="col-span-5 mt-1 h-10 rounded-md border-gray-300 shadow-sm focus:border-indigo-200 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder="Your Long URL"
+                placeholder="eg. http://google.com.sg"
                 onChange={(event) => this.handleChange(event)}
               />
               <button
@@ -65,31 +65,30 @@ class Home extends Component {
                 Submit
               </button>
             </div>
-
-            <div className="grid grid-cols-1 gap-y-4 mt-6 w-full">
-              <h2 className="text-2xl font-bold text-center my-2">Shorten Success</h2>
-              <label className="block">
-                <span className="text-gray-700">Your long URL</span>
-                <input
-                  type="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  value={this.state.longUrl}
-                  readOnly
-                />
-              </label>
-              <label className="block">
-                <span className="text-left">Your short URL</span>
-                <input
-                  type="text"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  placeholder=""
-                  value={this.state.shortUrl}
-                  readOnly
-                />
-              </label>
-            </div>
+            {!this.state.hideResultSuccess ?
+              <div className="grid grid-cols-1 gap-y-4 mt-6 w-full">
+                <h2 className="text-2xl font-bold text-center my-2">Shorten Success</h2>
+                <label className="block">
+                  <span className="text-gray-700">Your long URL</span>
+                  <input
+                    type="text"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    value={this.state.longUrl}
+                    readOnly
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-left">Your short URL</span>
+                  <input
+                    type="text"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    placeholder=""
+                    value={this.state.shortUrl}
+                    readOnly
+                  />
+                </label>
+              </div> : null}
           </div>
-
         </div>
       </div>
     );
