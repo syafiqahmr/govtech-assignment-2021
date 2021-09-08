@@ -8,6 +8,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
+    "https://govtech-2021-url-shorterner.herokuapp.com",
     "http://localhost",
     "http://localhost:3000",
 ]
