@@ -32,7 +32,7 @@ class Home extends Component {
           hideResultSuccess: false,
           longUrlForm: "",
           longUrl: data.long_url,
-          shortUrl: window.location.hostname + ":" + window.location.port + "/" + data.short_url
+          shortUrl: window.location.hostname == "localhost" ? window.location.hostname + ":" + window.location.port + "/" + data.short_url : window.location.hostname + "/" + data.short_url
         });
       },
       (error) => {
