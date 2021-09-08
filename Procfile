@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath backend.src -w 4 -k uvicorn.workers.UvicornWorker backend.src.index:app
+web: sh ./backend/src/run.sh
