@@ -8,7 +8,7 @@ class Home extends Component {
       longUrl: "",
       shortUrl: "",
       hideResultSuccess: true,
-      api: "http://localhost:8000/url"
+      api: process.env.REACT_APP_API_URL
     }
   }
 
