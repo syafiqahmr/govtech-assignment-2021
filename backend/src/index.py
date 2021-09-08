@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from routes.index import url
 from fastapi.middleware.cors import CORSMiddleware
+from config.db import Base, engine
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
