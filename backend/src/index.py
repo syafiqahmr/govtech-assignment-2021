@@ -1,10 +1,14 @@
 from fastapi import FastAPI
 from routes.index import url
 from fastapi.middleware.cors import CORSMiddleware
+from config.db import Base, engine
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 origins = [
+    "https://govtech-2021-url-shorterner.herokuapp.com",
     "http://localhost",
     "http://localhost:3000",
 ]

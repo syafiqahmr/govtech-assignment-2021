@@ -6,7 +6,7 @@ class Link extends Component {
     this.state = {
       shortUrl: "",
       hideError: true,
-      api: "http://localhost:8000/url"
+      api: process.env.REACT_APP_API_URL
     }
   }
 
@@ -50,7 +50,14 @@ class Link extends Component {
               </div>
             </div>
           </div>
-          : null
+          :
+          <div className="w-screen h-screen bg-gray-100">
+            <div className="flex flex-wrap content-center max-w-2xl justify-center mx-auto my-auto px-2">
+              <div className="w-full my-4 block h-full">
+                <h1 className="text-3xl font-bold text-center my-2">Redirecting...</h1>
+              </div>
+            </div>
+          </div>
         }
       </div>
     );
