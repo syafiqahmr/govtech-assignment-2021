@@ -30,6 +30,7 @@ class Home extends Component {
       (data) => {
         this.setState({
           hideResultSuccess: false,
+          longUrlForm: "",
           longUrl: data.long_url,
           shortUrl: window.location.hostname + ":" + window.location.port + "/" + data.short_url
         });
@@ -48,7 +49,7 @@ class Home extends Component {
           <div className="flex flex-wrap content-center max-w-2xl justify-center mx-auto px-2">
             <div className="w-full my-4 block">
               <h1 className="text-3xl font-bold text-center my-2">Url Shorterner</h1>
-              <h3>Enter a long URL to make a short URL!</h3>
+              <h3 className="text-center">Enter a long URL to make a short URL!</h3>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-6 w-full gap-y-4 sm:gap-x-4 border-b-2 border-gray-200 pb-8">
               <input

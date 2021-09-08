@@ -11,7 +11,6 @@ class Link extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.match.params);
     this.setState({
       shortUrl: this.props.match.params.shortUrl
     }, () => this.getData())
