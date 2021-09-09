@@ -46,7 +46,7 @@ class Link extends Component {
             <div className="flex flex-wrap content-center max-w-2xl justify-center mx-auto my-auto px-2">
               <div className="w-full my-4 block h-full">
                 <h1 className="text-3xl font-bold text-center my-2">Invalid Short URL</h1>
-                <a href="/" className="text-indigo-600 text-lg font-medium hover:text-indigo-400">Back to Home</a>
+                <a href="/" className="text-indigo-600 text-lg font-medium text-center hover:text-indigo-400">Back to Home</a>
               </div>
             </div>
           </div>
