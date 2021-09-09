@@ -10,7 +10,7 @@ _services.create_database()
 
 
 @url.get("/url/{short_url}", response_model=_schemas.Url)
-def write_data(short_url: str, db: _orm.Session = _fastapi.Depends(_services.get_db)):
+def read_data(short_url: str, db: _orm.Session = _fastapi.Depends(_services.get_db)):
     return _services.get_url_by_short_url(db, short_url)
 
 

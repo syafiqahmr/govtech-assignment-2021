@@ -69,3 +69,15 @@ Change directory to `src` and run the app.
 $ cd src
 $ uvicorn index:app --reload
 ```
+
+
+
+## Run test
+
+Unit testcases are written in `src/test`. To run all the testcases, change directory to `src` and run pytest. 
+
+```
+$ cd src
+$ PYTHONPATH=. pytest
+```
+
